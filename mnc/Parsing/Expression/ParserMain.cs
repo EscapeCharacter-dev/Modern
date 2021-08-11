@@ -105,7 +105,7 @@ namespace mnc.Parsing.Expression
         /// The previous token.
         /// </summary>
         private Token Before => Position >= 1 ? Peek(-1) : null;
-
+        
         /// <summary>
         /// Tries to match a token.
         /// </summary>

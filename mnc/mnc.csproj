@@ -15,8 +15,4 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Generation\" />
-  </ItemGroup>
-
 </Project>
