@@ -1,0 +1,108 @@
+﻿#define F64 double
+
+F64 Sqrt(F64 n)
+{
+	F64 precision = 0.00001;
+	F64 i;
+	for (i = 0; i * i <= n; i++) ;
+	for (--i; i * i < n; i += precision) ;
+	return i;
+}
+
+// W H go in depth, base : X, Y
+struct Rectangle
+{
+	F64 X;	// X
+	F64 Y;	// Y
+	F64 W;	// Width
+	F64 H;	// Height
+	
+	F64 Area():		W * H;				// Area
+	F64 Perimeter():	X + Y + X + H;	// Perimiter
+	F64 Bottom():		Y + H;			// Bottom
+	F64 Left():		X;					// Left
+	F64 Right():		X + W;			// Right
+	F64 Top():		Y;					// Top
+	F64 Ratio():		W / H;			// Aspect Ratio
+}
+
+// 3-tuple vector of ldouble
+struct Vec3
+{
+	F64 X;
+	F64 Y;
+	F64 Z;
+
+	F64 Length(): Sqrt(X * X + Y * Y + Z * Z);
+	F64 SquaredLength()
+	{
+		F64 len = Length();
+		return len * len;
+	}
+
+	Vec3 Negate()
+	{
+		Vec3 new;
+		new.X = -X;
+		new.Y = -Y;
+		new.Z = -Z;
+		return new;
+	}
+
+	Vec3 Scaled(F64 scale)
+	{
+		Vec3 new;
+		new.X = X * scale;
+		new.Y = Y * scale;
+		new.Z = Z * scale;
+		return new;
+	}
+
+	Vec3 Normalized()
+	{
+		Vec3 new;
+		F64 len = Length();
+		new.X = X / len;
+		new.Y = Y / len;
+		new.Z = Z / len;
+		return new;
+	}
+}
+
+Vec3 Add(Vec3 left, Vec3 right)
+{
+	Vec3 new;
+	new.X = left.X + right.X;
+	new.Y = left.Y + right.Y;
+	new.Z = left.Z + right.Z;
+	return new;
+}
+
+Vec3 Sub(Vec3 left, Vec3 right)
+{
+	Vec3 new;
+	new.X = left.X - right.X;
+	new.Y = left.Y - right.Y;
+	new.Z = left.Z - right.Z;
+	return new;
+}
+
+Vec3 Mul(Vec3 left, Vec3 right)
+{
+	Vec3 new;
+	new.X = left.X * right.X;
+	new.Y = left.Y * right.Y;
+	new.Z = left.Z * right.Z;
+	return new;
+}
+
+Vec3 Div(Vec3 left, Vec3 right)
+{
+	Vec3 new;
+	new.X = left.X / right.X;
+	new.Y = left.Y / right.Y;
+	new.Z = left.Z / right.Z;
+	return new;
+}
+
+F64 Dot(Vec3 left, Vec3 right): left.X * right.X + left.Y * right.Y + left.Z * right.Z;

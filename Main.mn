@@ -1,0 +1,8 @@
+﻿public int Main(int argc, char @@argv)
+{
+	struct EmptyStruct {}
+
+	EmptyStruct str;
+
+	str.X = 3;
+}
